@@ -1,0 +1,25 @@
+#!/bin/bash
+#starting openvas and scanning hosts
+
+#This script is ran first and Target_return will craete a target 
+Target_return=$(omp --username demo -w demo --xml="<create_target><name>Script1</name><hosts>192.168.1.3</hosts></create_target>")
+#This echo the results of the target whether it was created successfully or not
+echo "$Target_return | grep -m1 'resource create' || exit 1"
+
+#getting the Target ID to create the task and printing it into the target file.
+UUID=$(omp --username demo -w demo -T | grep 'Script1' > target)
+#This will show the ID of the target
+targetid=$(head -c 36 target)
+echo "UUID = $targetid"
+
+#run task with id from openvas_start script
+create_task=$(omp --username demo -w demo -C -n 'Script1task' -c 'daba56c8-73ec-11df-a475-002264764cea' --target $targetid)
+#Ignore this line.dont create_task=$(omp --username demo -w demo -X ="<create_task><name>Script1task</name><comment>Testing script 1 task</comment><config id='708f25c4-7489-11df-8094-002264764cea'/><target id=$targetid/></create_task>")
+#This graps the task ID by using the name SCript1task and prints it out in scan file
+see_task=$(omp --username demo -w demo -G | grep 'Script1task' > scan)
+#Shows the task ID
+taskid=$(head -c 36 scan)
+echo "task id = $taskid"
+
+#start the task - this will run the scan.
+start_task=$(sudo omp --username demo -w demo -S "$taskid")
