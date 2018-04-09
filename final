@@ -1,0 +1,44 @@
+I Summary
+=========
+
+This document reports on the results of an automatic security scan.
+The report first summarises the results found.
+Then, for each host, the report describes every issue found.
+Please consider the advice given in each description, in order to rectify
+the issue.
+
+All dates are displayed using the timezone "Coordinated Universal Time",
+which is abbreviated "UTC".
+
+Vendor security updates are not trusted.
+
+Overrides are off.  Even when a result has an override, this report uses
+the actual threat of the result.
+
+Notes are included in the report.Information on overrides is included in the report.
+
+This report might not show details of all issues that were found.
+Issues with the threat level "High" are not shown.
+Issues with the threat level "Medium" are not shown.
+Issues with the threat level "Low" are not shown.
+Issues with the threat level "Log" are not shown.
+Issues with the threat level "Debug" are not shown.
+Issues with the threat level "False Positive" are not shown.
+Only results with a minimum QoD of 70 are shown.
+
+This report contains 0 results.  Before filtering there were 0 results.
+
+Scan started: Sat Apr 7 17:03:26 2018 UTC
+Scan ended:   Sat Apr 7 17:04:12 2018 UTC
+Task:         Script1task
+
+Host Summary
+************
+
+Host            High  Medium  Low  Log  False Positive
+Total: 0           0       0    0    0               0
+
+
+II Results per Host
+===================
+
