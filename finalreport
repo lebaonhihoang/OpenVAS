@@ -1,0 +1,291 @@
+I Summary
+=========
+
+This document reports on the results of an automatic security scan.
+The report first summarises the results found.
+Then, for each host, the report describes every issue found.
+Please consider the advice given in each description, in order to rectify
+the issue.
+
+All dates are displayed using the timezone "Coordinated Universal Time",
+which is abbreviated "UTC".
+
+Vendor security updates are not trusted.
+
+Overrides are off.  Even when a result has an override, this report uses
+the actual threat of the result.
+
+Notes are included in the report.Information on overrides is included in the report.
+
+This report might not show details of all issues that were found.
+Issues with the threat level "High" are not shown.
+Issues with the threat level "Medium" are not shown.
+Issues with the threat level "Low" are not shown.
+Issues with the threat level "Log" are not shown.
+Issues with the threat level "Debug" are not shown.
+Issues with the threat level "False Positive" are not shown.
+Only results with a minimum QoD of 70 are shown.
+
+This report contains all 8 results selected by the
+filtering described above.  Before filtering there were 8 results.
+
+Scan started: Sat Apr 7 17:15:15 2018 UTC
+Scan ended:   Sat Apr 7 21:14:07 2018 UTC
+Task:         Script1task
+
+Host Summary
+************
+
+Host            High  Medium  Low  Log  False Positive
+192.168.1.3        1       0    0    7               0
+Total: 1           1       0    0    7               0
+
+
+II Results per Host
+===================
+
+Host 192.168.1.3
+****************
+
+Scanning of this host started at: Sat Apr 7 17:16:04 2018 UTC
+Number of results: 8
+
+Port Summary for Host 192.168.1.3
+---------------------------------
+
+Service (Port)          Threat Level
+general/tcp             High
+general/CPE-T           Log
+445/tcp                 Log
+135/tcp                 Log
+
+Security Issues for Host 192.168.1.3
+------------------------------------
+
+Issue
+-----
+NVT:    CPE Inventory
+OID:    1.3.6.1.4.1.25623.1.0.810002
+Threat: Log (CVSS: 0.0)
+Port:   general/CPE-T
+
+Summary:
+This routine uses information collected by other routines about
+  CPE identities (http://cpe.mitre.org/) of operating systems, services and
+  applications detected during the scan.
+
+Vulnerability Detection Result:
+192.168.1.3|cpe:/o:microsoft:windows_xp
+
+Log Method:
+Details:
+CPE Inventory
+(OID: 1.3.6.1.4.1.25623.1.0.810002)
+Version used: $Revision: 8140 $
+
+
+Issue
+-----
+NVT:    DCE/RPC and MSRPC Services Enumeration
+OID:    1.3.6.1.4.1.25623.1.0.108044
+Threat: Log (CVSS: 0.0)
+Port:   135/tcp
+
+Summary:
+Distributed Computing Environment / Remote Procedure Calls (DCE/RPC) or MSRPC se!
+rvices running
+  on the remote host can be enumerated by connecting on port 135 and doing the a!
+ppropriate queries.
+  The actual reporting takes place in the NVT 'DCE/RPC and MSRPC Services Enumer!
+ation Reporting'
+  (OID: 1.3.6.1.4.1.25623.1.0.10736)
+
+Vulnerability Detection Result:
+A DCE endpoint resolution service seems to be running on this port.
+
+Impact:
+An attacker may use this fact to gain more knowledge
+  about the remote host.
+
+Solution:
+Solution type: Mitigation
+Filter incoming traffic to this port.
+
+Log Method:
+Details:
+DCE/RPC and MSRPC Services Enumeration
+(OID: 1.3.6.1.4.1.25623.1.0.108044)
+Version used: $Revision: 8145 $
+
+
+Issue
+-----
+NVT:    Microsoft SMB Signing Disabled
+OID:    1.3.6.1.4.1.25623.1.0.802726
+Threat: Log (CVSS: 0.0)
+Port:   445/tcp
+
+Summary:
+Checking for SMB signing is disabled.
+  The script logs in via smb, checks the SMB Negotiate Protocol response to
+  confirm SMB signing is disabled.
+
+Vulnerability Detection Result:
+SMB signing is disabled on this host
+
+Log Method:
+Details:
+Microsoft SMB Signing Disabled
+(OID: 1.3.6.1.4.1.25623.1.0.802726)
+Version used: $Revision: 5958 $
+
+
+Issue
+-----
+NVT:    OS Detection Consolidation and Reporting
+OID:    1.3.6.1.4.1.25623.1.0.105937
+Threat: Log (CVSS: 0.0)
+Port:   general/tcp
+
+Summary:
+This script consolidates the OS information detected by several NVTs and tries t!
+o find the best matching OS.
+  Furthermore it reports all previously collected information leading to this be!
+st matching OS. It also reports possible additional informations
+  which might help to improve the OS detection.
+  If any of this information is wrong or could be improved please consider to re!
+port these to openvas-plugins@wald.intevation.org.
+
+Vulnerability Detection Result:
+Best matching OS:
+OS: Windows XP
+CPE: cpe:/o:microsoft:windows_xp
+Found by NVT: 1.3.6.1.4.1.25623.1.0.102011 (SMB NativeLanMan)
+Concluded from SMB/Samba banner on port 445/tcp: OS String: Windows 5.1; SMB Str!
+ing: Windows 2000 LAN Manager
+Setting key "Host/runs_windows" based on this information
+Other OS detections (in order of reliability):
+OS: Microsoft Windows
+CPE: cpe:/o:microsoft:windows
+Found by NVT: 1.3.6.1.4.1.25623.1.0.108044 (DCE/RPC and MSRPC Services Enumerati!
+on)
+Concluded from DCE/RPC and MSRPC Services Enumeration on port 135/tcp
+
+Log Method:
+Details:
+OS Detection Consolidation and Reporting
+(OID: 1.3.6.1.4.1.25623.1.0.105937)
+Version used: $Revision: 8854 $
+
+
+Issue
+-----
+NVT:    OS End Of Life Detection
+OID:    1.3.6.1.4.1.25623.1.0.103674
+Threat: High (CVSS: 10.0)
+Port:   general/tcp
+
+Product detection result: cpe:/o:microsoft:windows_xp
+Detected by: OS Detection Consolidation and Reporting (OID: 1.3.6.1.4.1.25623.1.0.105937)
+
+Summary:
+OS End Of Life Detection
+  The Operating System on the remote host has reached the end of life and should
+  not be used anymore
+
+Vulnerability Detection Result:
+The "Windows XP" Operating System on the remote host has reached the end of life!
+.
+CPE:               cpe:/o:microsoft:windows_xp
+EOL date:          2014-04-08
+EOL info:          https://support.microsoft.com/en-us/lifecycle/search?sort=PN&!
+alpha=Microsoft%20Windows%20XP&Filter=FilterNO
+
+Vulnerability Detection Method:
+Details:
+OS End Of Life Detection
+(OID: 1.3.6.1.4.1.25623.1.0.103674)
+Version used: $Revision: 7864 $
+
+Product Detection Result:
+Product:cpe:/o:microsoft:windows_xp
+
+Method:OS Detection Consolidation and Reporting
+(OID: 1.3.6.1.4.1.25623.1.0.105937)
+
+
+Issue
+-----
+NVT:    SMB NativeLanMan
+OID:    1.3.6.1.4.1.25623.1.0.102011
+Threat: Log (CVSS: 0.0)
+Port:   445/tcp
+
+Summary:
+It is possible to extract OS, domain and SMB server information
+  from the Session Setup AndX Response packet which is generated during NTLM aut!
+hentication.
+
+Vulnerability Detection Result:
+Detected SMB workgroup: WORKGROUP
+Detected SMB server: Windows 2000 LAN Manager
+Detected OS: Windows 5.1
+
+Log Method:
+Details:
+SMB NativeLanMan
+(OID: 1.3.6.1.4.1.25623.1.0.102011)
+Version used: $Revision: 8451 $
+
+
+Issue
+-----
+NVT:    SMB/CIFS Server Detection
+OID:    1.3.6.1.4.1.25623.1.0.11011
+Threat: Log (CVSS: 0.0)
+Port:   445/tcp
+
+Summary:
+This script detects wether port 445 and 139 are open and
+  if they are running a CIFS/SMB server.
+
+Vulnerability Detection Result:
+A CIFS server is running on this port
+
+Log Method:
+Details:
+SMB/CIFS Server Detection
+(OID: 1.3.6.1.4.1.25623.1.0.11011)
+Version used: $Revision: 4261 $
+
+
+Issue
+-----
+NVT:    Traceroute
+OID:    1.3.6.1.4.1.25623.1.0.51662
+Threat: Log (CVSS: 0.0)
+Port:   general/tcp
+
+Summary:
+A traceroute from the scanning server to the target system was
+  conducted. This traceroute is provided primarily for informational
+  value only. In the vast majority of cases, it does not represent a
+  vulnerability. However, if the displayed traceroute contains any
+  private addresses that should not have been publicly visible, then you
+  have an issue you need to correct.
+
+Vulnerability Detection Result:
+Here is the route from 192.168.1.2 to 192.168.1.3:
+192.168.1.2
+?
+
+Solution:
+Block unwanted packets from escaping your network.
+
+Log Method:
+Details:
+Traceroute
+(OID: 1.3.6.1.4.1.25623.1.0.51662)
+Version used: $Revision: 8528 $
+
+
